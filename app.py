@@ -79,5 +79,5 @@ if file:
 
     {'normal': st.success, 'uncertain': st.warning, 'referable': st.error}[kind](msg)
     st.subheader(f'Predicted grade: {LABELS[cls]} ({prob[cls]*100:.1f}% confidence)')
-    st.bar_chart(pd.DataFrame({'Probability': prob}, index=LABELS))
+    st.bar_chart(pd.DataFrame({'Probability': prob}, index=[f'{i}-{l}' for i, l in enumerate(LABELS)]))
     st.caption('Model: EfficientNet-B0 (transfer learning) | Test QWK 0.89 | Referable-DR sensitivity 0.94, specificity 0.95')
